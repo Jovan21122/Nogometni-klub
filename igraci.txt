@@ -1,0 +1,22 @@
+1;Marc-Andre ter Stegen;Golman
+2;Pau Cubarsi;Branic
+3;Alejandro Balde;Lijevi bek
+4;Ronald Araujo;Brani
+5;Inigo Martinez;Brani
+6;Pablo Gavi;Vezni
+7;Ferran Torres;Napadac
+8;Pedri;Vezni
+9;Rober Lewandowski;Napadac
+10;Ansu Fati;Napadac
+11;Raphinha;Napadac
+12;Inaki Pena;Golman
+13;Wojciech Szczesny;Golman
+14;Andreas Christensen;Branic
+15;Fermin Lopez;Vezni
+16;Marc Casado;Vezni
+17;Frenkie de Jong;Vezni
+18;Dani Olmo;Vezni
+19;Lamine Yamal;Napadac
+20;Pau Victor;Napadac
+21;Eric Garcia;Branic
+

@@ -1,0 +1,21 @@
+1;Marc-Andre ter Stegen;0;0
+2;Pau Cubarsi;1;4
+3;Alejandro Balde;1;8
+4;Ronald Araujo;2;2
+5;Inigo Martinez;3;5
+6;Pablo Gavi;3;2
+7;Ferran Torres;19;7
+8;Pedri;&;8
+9;Rober Lewandowski;42;3
+10;Ansu Fati;0;0
+11;Raphinha;34;22
+12;Inaki Pena;0;0
+13;Wojciech Szczesny;0;0
+14;Andreas Christensen;0;0
+15;Fermin Lopez;8;9
+16;Marc Casado;1;6
+17;Frenkie de Jong;2;2
+18;Dani Olmo;12;6
+19;Lamine Yamal;18;21
+20;Pau Victor;2;1
+21;Eric Garcia;5;3
