@@ -1,4 +1,4 @@
- #define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include "barcelona.h"
 
@@ -43,19 +43,12 @@ void menu() {
             break;
         case 6:
             printf("Unesi ime igraca: ");
-            scanf(" %49[^\n]", imeZaPretragu);
-            {
-                Igrac* nadjeni = pretraziIgracaPoImenu(igraci, broj, imeZaPretragu);
-                if (nadjeni)
-                    printf("Pronaden: %s - %s, Golovi: %d, Asistencije: %d\n", nadjeni->ime, nadjeni->pozicija, nadjeni->golovi, nadjeni->asistencije);
-                else
-                    printf("Igrac nije pronaden.\n");
-            }
+            scanf(" %[^\n]", imeZaPretragu);
+            pretraziIgracaPoImenu(igraci, broj, imeZaPretragu);
             break;
         case 7:
-            ispisiIgracePoPozicijama(igraci, 0, broj);
+            ispisiIgracePoPoziciji(igraci, broj);
             break;
-        
         case 0:
             printf("Izlaz iz programa.\n");
             break;
