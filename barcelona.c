@@ -3,7 +3,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "barcelona.h"
+
+
 
 void ucitajIgrace(Igrac igraci[], int* broj) {
     FILE* file = fopen("igraci.txt", "r");
@@ -12,14 +15,12 @@ void ucitajIgrace(Igrac igraci[], int* broj) {
         return;
     }
 
-    char linija[100];
+    char linija[MAX_LINIJA];
     *broj = 0;
 
     while (fgets(linija, sizeof(linija), file)) {
-        
         linija[strcspn(linija, "\n")] = 0;
-
-        if (strlen(linija) == 0) continue; // preskoci prazne redove
+        if (strlen(linija) == 0) continue;
 
         Igrac igrac;
         if (sscanf(linija, "%d;%49[^;];%19[^\n]", &igrac.id, igrac.ime, igrac.pozicija) == 3) {
@@ -34,6 +35,7 @@ void ucitajIgrace(Igrac igraci[], int* broj) {
 
     fclose(file);
 }
+
 void ucitajStatistiku(Igrac igraci[], int broj) {
     FILE* file = fopen("statistika.txt", "r");
     if (!file) {
@@ -41,11 +43,12 @@ void ucitajStatistiku(Igrac igraci[], int broj) {
         return;
     }
 
-    char linija[100];
+    char linija[MAX_LINIJA];
     while (fgets(linija, sizeof(linija), file)) {
         int id, golovi, asistencije;
         char ime[50];
-        if (sscanf(linija, "%d;%49[^;];%d;%d", &id, ime, &golovi, &asistencije) == 4) {
+        if (sscanf(linija, " %d ; %49[^;] ; %d ; %d", &id, ime, &golovi, &asistencije) == 4) {
+
             for (int i = 0; i < broj; i++) {
                 if (igraci[i].id == id) {
                     igraci[i].golovi = golovi;
@@ -58,6 +61,8 @@ void ucitajStatistiku(Igrac igraci[], int broj) {
 
     fclose(file);
 }
+    
+
 
 void prikaziIgrace(Igrac igraci[], int broj) {
     printf("\n--- Igraci ---\n");
@@ -73,19 +78,24 @@ void prikaziStatistiku(Igrac igraci[], int broj) {
     }
 }
 
+
+int usporedbaGolova(const void* a, const void* b) {
+    return ((Igrac*)b)->golovi - ((Igrac*)a)->golovi;
+}
+void sortirajPoGolovima(Igrac igraci[], int broj) {
+    qsort(igraci, broj, sizeof(Igrac), usporedbaGolova);
+}
+
+int usporedbaAsistencija(const void* a, const void* b) {
+    return ((Igrac*)b)->asistencije - ((Igrac*)a)->asistencije;
+}
+void sortirajPoAsistencijama(Igrac igraci[], int broj) {
+    qsort(igraci, broj, sizeof(Igrac), usporedbaAsistencija);
+}
+
 void prikaziNajboljeStrijelce(Igrac igraci[], int broj) {
     printf("\n--- Najbolji strijelci ---\n");
-
-    for (int i = 0; i < broj - 1; i++) {
-        for (int j = i + 1; j < broj; j++) {
-            if (igraci[i].golovi < igraci[j].golovi) {
-                Igrac temp = igraci[i];
-                igraci[i] = igraci[j];
-                igraci[j] = temp;
-            }
-        }
-    }
-
+    sortirajPoGolovima(igraci, broj);
     for (int i = 0; i < broj; i++) {
         printf("%s - %d golova\n", igraci[i].ime, igraci[i].golovi);
     }
@@ -93,17 +103,7 @@ void prikaziNajboljeStrijelce(Igrac igraci[], int broj) {
 
 void prikaziNajboljeAsistente(Igrac igraci[], int broj) {
     printf("\n--- Najbolji asistenti ---\n");
-
-    for (int i = 0; i < broj - 1; i++) {
-        for (int j = i + 1; j < broj; j++) {
-            if (igraci[i].asistencije < igraci[j].asistencije) {
-                Igrac temp = igraci[i];
-                igraci[i] = igraci[j];
-                igraci[j] = temp;
-            }
-        }
-    }
-
+    sortirajPoAsistencijama(igraci, broj);
     for (int i = 0; i < broj; i++) {
         printf("%s - %d asistencija\n", igraci[i].ime, igraci[i].asistencije);
     }
@@ -116,11 +116,47 @@ void prikaziTrofeje() {
         return;
     }
 
-    char linija[100];
+    char linija[MAX_LINIJA];
     printf("\n--- Trofeji FC Barcelone ---\n");
     while (fgets(linija, sizeof(linija), file)) {
         printf("%s", linija);
     }
 
     fclose(file);
+}
+
+
+int usporediImena(const void* a, const void* b) {
+    Igrac* igrac1 = (Igrac*)a;
+    Igrac* igrac2 = (Igrac*)b;
+    return _stricmp(igrac1->ime, igrac2->ime);
+}
+
+
+Igrac* pretraziIgracaPoImenu(Igrac igraci[], int broj, const char* ime) {
+    sortirajPoGolovima(igraci, broj);
+    Igrac temp;
+    strncpy(temp.ime, ime, sizeof(temp.ime));
+    return (Igrac*)bsearch(&temp, igraci, broj, sizeof(Igrac), usporediImena);
+}
+
+
+void ispisiIgraceRekurzivno(Igrac igraci[], int indeks, int broj) {
+    if (indeks >= broj) return;
+    printf("%d. %s - %s\n", igraci[indeks].id, igraci[indeks].ime, igraci[indeks].pozicija);
+    ispisiIgraceRekurzivno(igraci, indeks + 1, broj);
+}
+
+void preimenujStatistiku() {
+    if (rename("statistika.txt", "stara_statistika.txt") == 0)
+        printf("Datoteka preimenovana.\n");
+    else
+        perror("Greska pri preimenovanju.");
+}
+
+void obrisiTrofeje() {
+    if (remove("trofeji.txt") == 0)
+        printf("Datoteka trofeji.txt je obrisana.\n");
+    else
+        perror("Greska pri brisanju.");
 }
