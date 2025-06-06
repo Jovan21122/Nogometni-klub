@@ -12,7 +12,6 @@ typedef struct {
     int asistencije;
 } Igrac;
 
-
 void ucitajIgrace(Igrac igraci[], int* broj);
 void ucitajStatistiku(Igrac igraci[], int broj);
 void prikaziIgrace(Igrac igraci[], int broj);
@@ -20,12 +19,7 @@ void prikaziStatistiku(Igrac igraci[], int broj);
 void prikaziNajboljeStrijelce(Igrac igraci[], int broj);
 void prikaziNajboljeAsistente(Igrac igraci[], int broj);
 void prikaziTrofeje();
-void sortirajPoGolovima(Igrac igraci[], int broj);
-void sortirajPoAsistencijama(Igrac igraci[], int broj);
-
-
-Igrac* pretraziIgracaPoImenu(Igrac igraci[], int broj, const char* ime);
-
-
+void ispisiIgracePoPoziciji(Igrac igraci[], int broj);
+void pretraziIgracaPoImenu(Igrac igraci[], int broj, const char* ime);
 
 #endif
