@@ -16,7 +16,7 @@ void ucitajIgrace(Igrac igraci[], int* broj) {
     *broj = 0;
 
     while (fgets(linija, sizeof(linija), file)) {
-        // Ukloni \n s kraja ako postoji
+        
         linija[strcspn(linija, "\n")] = 0;
 
         if (strlen(linija) == 0) continue; // preskoci prazne redove
