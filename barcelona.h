@@ -1,25 +1,59 @@
 #ifndef BARCELONA_H
 #define BARCELONA_H
 
-#define MAX_IGRACA 100
-#define MAX_LINIJA 256
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef enum {
+    VRATAR = 1,
+    OBRANA,
+    VEZNI,
+    NAPAD
+} Pozicija;
 
 typedef struct {
     int id;
-    char ime[50];
-    char pozicija[20];
+    char ime[30];
+    int dob;
+    Pozicija pozicija;
     int golovi;
     int asistencije;
 } Igrac;
 
-void ucitajIgrace(Igrac igraci[], int* broj);
-void ucitajStatistiku(Igrac igraci[], int broj);
-void prikaziIgrace(Igrac igraci[], int broj);
+extern Igrac* igraci;
+extern int brojIgraca;
+const char* nazivPozicije(Pozicija p);
+
+
+void dodajIgraca();
+void azurirajIgraca();
+void obrisiIgraca();
+
+int ucitajIzBinarneDatoteke(Igrac igraci[], int* broj);
+void spremiUBinarnuDatoteku(Igrac igraci[], int broj);
+void spremiUBinarnu();
+void ucitajIzTekstualne();
+
+
+void sortirajPoGolovima();
+void sortirajPoAsistencijama();
+void sortirajPoImenu();
+void pretraziPoImenu(const char* ime);
+
+
 void prikaziStatistiku(Igrac igraci[], int broj);
-void prikaziNajboljeStrijelce(Igrac igraci[], int broj);
-void prikaziNajboljeAsistente(Igrac igraci[], int broj);
 void prikaziTrofeje();
 void ispisiIgracePoPoziciji(Igrac igraci[], int broj);
-void pretraziIgracaPoImenu(Igrac igraci[], int broj, const char* ime);
+void ispisiRekurzivno(int index);
+
+
+int usporedbaGolova(const void*, const void*);
+int usporedbaAsistencija(const void*, const void*);
+int usporedbaImena(const void*, const void*);
+void preimenujDatoteku(const char* staro, const char* novo);
+void obrisiDatoteku(const char* naziv);
+void ispisiVelicinuBinDatoteke();
+void brisiMemoriju();
 
 #endif
