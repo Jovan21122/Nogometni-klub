@@ -1,22 +1,28 @@
-1;Marc-Andre ter Stegen;Golman
-2;Pau Cubarsi;Branic
-3;Alejandro Balde;Lijevi bek
-4;Ronald Araujo;Brani
-5;Inigo Martinez;Brani
-6;Pablo Gavi;Vezni
-7;Ferran Torres;Napadac
-8;Pedri;Vezni
-9;Rober Lewandowski;Napadac
-10;Ansu Fati;Napadac
-11;Raphinha;Napadac
-12;Inaki Pena;Golman
-13;Wojciech Szczesny;Golman
-14;Andreas Christensen;Branic
-15;Fermin Lopez;Vezni
-16;Marc Casado;Vezni
-17;Frenkie de Jong;Vezni
-18;Dani Olmo;Vezni
-19;Lamine Yamal;Napadac
-20;Pau Victor;Napadac
-21;Eric Garcia;Branic
-
+1;Marc-Andre ter Stegen;32;1;0;0
+2;Ronald Araujo;26;2;2;2
+3;Jules Kounde;26;2;2;8
+4;Alejandro Balde;21;2;1;8
+5;Andreas Christensen;29;2;1;1
+6;Frenkie de Jong;27;3;3;6
+7;Dani Olmo;24;3;10;6
+8;Pedri Gonzalez;23;3;4;8
+9;Robert Lewandowski;36;4;42;3
+10;Ansu Fati;21;4;0;0
+11;Raphinha Dias;29;4;34;22
+12;Ferran Torres;25;4;19;7
+13;Lamine Yamal;17;4;18;21
+14;Pablo Torre;20;3;4;3
+15;Pau Cubarsí;18;2;1;4
+16;Fermín López;21;3;8;9
+17;Gavi Paez;20;3;3;2
+18;Eric García;23;2;5;3
+19;Pau Víctor;19;4;2;1
+20;Marc Bernal;18;3;0;0
+21;Héctor Fort;17;2;0;0
+22;Gerard Martín;19;2;1;6
+23;Sergi Domínguez;18;2;0;0
+24;Andrés Cuenca;17;2;0;0
+25;Toni Fernández;18;4;0;0
+26;Dani Rodríguez;19;4;0;0
+27;Wojciech Szczęsny;35;1;0;0
+28;Iñaki Peña;25;1;0;0
