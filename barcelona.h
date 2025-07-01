@@ -23,37 +23,31 @@ typedef struct {
 
 extern Igrac* igraci;
 extern int brojIgraca;
-const char* nazivPozicije(Pozicija p);
 
+const char* nazivPozicije(Pozicija p);
 
 void dodajIgraca();
 void azurirajIgraca();
 void obrisiIgraca();
+void brisiMemoriju();
 
-int ucitajIzBinarneDatoteke(Igrac igraci[], int* broj);
-void spremiUBinarnuDatoteku(Igrac igraci[], int broj);
+int ucitajIzBinarneDatoteke(Igrac igraci_local[], int* broj);
 void spremiUBinarnu();
-void ucitajIzTekstualne();
-
+void spremiUBinarnuDatoteku(Igrac igraci[], int broj);
 
 void sortirajPoGolovima();
 void sortirajPoAsistencijama();
 void sortirajPoImenu();
 void pretraziPoImenu(const char* ime);
 
-
+void ispisiRekurzivno(int index);
+void ispisiIgracePoPoziciji(Igrac igraci[], int broj);
 void prikaziStatistiku(Igrac igraci[], int broj);
 void prikaziTrofeje();
-void ispisiIgracePoPoziciji(Igrac igraci[], int broj);
-void ispisiRekurzivno(int index);
-
+void ispisiVelicinuBinDatoteke();
 
 int usporedbaGolova(const void*, const void*);
 int usporedbaAsistencija(const void*, const void*);
 int usporedbaImena(const void*, const void*);
-void preimenujDatoteku(const char* staro, const char* novo);
-void obrisiDatoteku(const char* naziv);
-void ispisiVelicinuBinDatoteke();
-void brisiMemoriju();
 
 #endif
